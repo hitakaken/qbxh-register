@@ -16,6 +16,7 @@
         <google.guava.version>18.0</google.guava.version>
         <google.guice.version>4.0</google.guice.version>
         <google.findbugs.version>3.0.0</google.findbugs.version>
+        <sitebricks.version>0.8.10</sitebricks.version>
         <!-- Web -->
         <jetty.version>9.2.11.v20150529</jetty.version>
         <shiro.version>1.2.3</shiro.version>
@@ -58,6 +59,16 @@
             <groupId>com.google.inject.extensions</groupId>
             <artifactId>guice-multibindings</artifactId>
             <version>${google.guice.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.sitebricks</groupId>
+            <artifactId>sitebricks</artifactId>
+            <version>${sitebricks.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.sitebricks</groupId>
+            <artifactId>sitebricks-converter</artifactId>
+            <version>${sitebricks.version}</version>
         </dependency>
 
         <!-- Jetty -->
