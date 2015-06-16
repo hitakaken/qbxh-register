@@ -1,4 +1,4 @@
-package com.novbank.guice;
+package com.novbank.web.guice;
 
 import com.google.inject.matcher.Matcher;
 

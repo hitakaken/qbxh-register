@@ -34,6 +34,21 @@
     <orderEntry type="library" name="Maven: com.google.inject.extensions:guice-servlet:4.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.inject.extensions:guice-assistedinject:4.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.inject.extensions:guice-multibindings:4.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.sitebricks:sitebricks:0.8.10" level="project" />
+    <orderEntry type="library" name="Maven: com.google.sitebricks:sitebricks-client:0.8.10" level="project" />
+    <orderEntry type="library" name="Maven: com.thoughtworks.xstream:xstream:1.3.1" level="project" />
+    <orderEntry type="library" name="Maven: xpp3:xpp3_min:1.1.4c" level="project" />
+    <orderEntry type="library" name="Maven: com.google.sitebricks:sitebricks-annotations:0.8.10" level="project" />
+    <orderEntry type="library" name="Maven: org.mvel:mvel2:2.1.3.Final" level="project" />
+    <orderEntry type="library" name="Maven: net.jcip:jcip-annotations:1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.intellij:annotations:7.0.3" level="project" />
+    <orderEntry type="library" name="Maven: com.ning:async-http-client:1.6.3" level="project" />
+    <orderEntry type="library" name="Maven: org.jboss.netty:netty:3.2.4.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.8.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.0.0.GA" level="project" />
+    <orderEntry type="library" name="Maven: com.google.sitebricks:sitebricks-converter:0.8.10" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.4" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:9.2.11.v20150529" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:9.2.11.v20150529" level="project" />
@@ -56,7 +71,12 @@
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.8.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-guice:1.2.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-web:1.2.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.5.4" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.5.0" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.5.4" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:webjars-servlet-2.x:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:webjars-locator:0.23" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:webjars-locator-core:0.22" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:jquery:2.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:bootstrap:3.3.4" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:font-awesome:4.3.0-2" level="project" />

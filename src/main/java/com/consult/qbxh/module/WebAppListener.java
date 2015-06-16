@@ -3,6 +3,8 @@ package com.consult.qbxh.module;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
+import com.novbank.web.sitebricks.SitebricksScannerModule;
+import com.novbank.web.webjars.WebJarsModule;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -22,7 +24,8 @@ public class WebAppListener extends GuiceServletContextListener {
     @Override
     protected Injector getInjector() {
         return Guice.createInjector(
-                new QbxhAppServletModule(),
+                new WebJarsModule("assets"),
+                new SitebricksScannerModule(Package.getPackage("com.consult.qbxh.controller")),
                 new QbxhShiroWebModule(this.servletContext));
     }
 }
