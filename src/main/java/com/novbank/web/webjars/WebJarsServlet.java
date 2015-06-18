@@ -51,8 +51,11 @@ public class WebJarsServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String partialPath = StringUtils.substring(request.getRequestURI(),request.getContextPath().length() + basePath.length()+1);
-        String webjarsResourceURI = locator.getFullPath(partialPath);
+        String requestPath = StringUtils.substring(request.getRequestURI(),request.getContextPath().length() + basePath.length()+2);
+        String webjar  = StringUtils.substringBefore(requestPath,"/");
+        String partialPath  = StringUtils.substringAfter(requestPath, "/");
+        String version = locator.getWebJars().get(webjar);
+        String webjarsResourceURI = locator.getFullPath(webjar,StringUtils.isNotBlank(version)? version + "/" +partialPath:partialPath);
         //String webjarsResourceURI = "/META-INF/resources" + request.getRequestURI().replaceFirst(request.getContextPath(), "");
         LOG.info("Webjars resource requested: " + webjarsResourceURI);
         InputStream inputStream = this.getClass().getResourceAsStream("/"+webjarsResourceURI);

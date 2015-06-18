@@ -3,7 +3,6 @@ package com.novbank.web.sitebricks;
 import com.google.common.collect.Sets;
 import com.google.sitebricks.SitebricksModule;
 
-import java.util.Collections;
 import java.util.Set;
 
 /**
@@ -14,12 +13,18 @@ public class SitebricksScannerModule extends SitebricksModule {
 
     public SitebricksScannerModule(Package... packages) {
         this.packages = Sets.newHashSet();
-        Collections.addAll(this.packages,packages);
+        if(packages!=null){
+            for(Package pkg : packages){
+                if(pkg!=null) this.packages.add(pkg);
+            }
+
+        }
     }
 
     public SitebricksScannerModule addPackages(Package... packages){
         if(packages!=null){
-            Collections.addAll(this.packages, packages);
+            for(Package pkg : packages)
+                if(pkg!=null) this.packages.add(pkg);
         }
         return this;
     }
