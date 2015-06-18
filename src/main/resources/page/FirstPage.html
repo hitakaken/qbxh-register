@@ -6,15 +6,15 @@
             <div class="modal">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form class="form-horizontal" method="post">
+                        <form class="form-horizontal" method="post" >
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             <h4 class="modal-title">会员注册</h4>
                         </div>
                         <div class="modal-body">
-                                <legend>请填写验证信息 ${checkInfo.name} ${errorMsg.size()} </legend>
+                                <legend>请填写验证信息 ${checkInfo} ${errorMsg.size()} </legend>
                                 <fieldset>
-                                    @ShowIf(!errorMsg.containsKey("name"))
+                                    @ShowIf(!error)
                                     <div class="form-group">
                                         <label for="name" class="col-lg-2 control-label">学会名称</label>
                                         <div class="col-lg-10 input-group">
@@ -22,7 +22,7 @@
                                         </div>
                                     </div>
 
-                                    @ShowIf(!errorMsg.containsKey("name"))
+                                    @ShowIf(error)
                                     <div class="form-group has-error">
                                         <label for="name" class="col-lg-2 control-label">学会名称</label>
                                         <div class="col-lg-10 input-group">

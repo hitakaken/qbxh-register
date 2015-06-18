@@ -34,4 +34,13 @@ public class CheckInfo {
     public void setChecksum(String checksum) {
         this.checksum = checksum;
     }
+
+    @Override
+    public String toString() {
+        return "CheckInfo{" +
+                "name='" + name + '\'' +
+                ", website='" + website + '\'' +
+                ", checksum='" + checksum + '\'' +
+                '}';
+    }
 }
