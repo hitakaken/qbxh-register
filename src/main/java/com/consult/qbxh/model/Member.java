@@ -21,26 +21,69 @@ public class Member implements Serializable {
     @Pattern(regexp = "\\d{6}")
     private String birthday;
 
+    @NotNull
+    @Pattern(regexp = "[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?")
+    private String email;
+
+    @NotNull
     private String mobile;
+
+    @NotNull
     private String jobTitle;
+
+    @NotNull
     private String education;
+
+    @NotNull
     private String degree;
+
+    @NotNull
     private String background;
+
+    @NotNull
     private String engage;
+
+    @NotNull
     private String company;
+
+    @NotNull
     private String department;
+
+    @NotNull
     private String position;
+
+    @NotNull
     private String workPhone;
+
+    @NotNull
     private String workAddress;
+
+    @NotNull
+    @Pattern(regexp = "[1-9]\\d{5}(?!\\d)")
     private String workZipCode;
+
+    @NotNull
     private String country;
+
+    @NotNull
     private String nationality;
+
+    @NotNull
     private String hometown;
+
+    @Pattern(regexp = "[1-9][0-9]{4,}")
     private String qq;
+
     private String weixin;
+
+    @NotNull
     private String socialWork;
+
+    @NotNull
     private String socialHonor;
+
     private String academicNational;
+
     private String academicInternational;
 
     @Pattern(regexp = "(^(\\d{6})(\\d{4})(\\d{2})(\\d{2})(\\d{3})([0-9]|X)$)|(^(\\d{6})(\\d{2})(\\d{2})(\\d{2})(\\d{3})$)|\\s+")
@@ -68,6 +111,14 @@ public class Member implements Serializable {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getMobile() {

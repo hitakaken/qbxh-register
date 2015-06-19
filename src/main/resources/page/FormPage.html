@@ -63,6 +63,20 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('email')) return ' has-error'; else return ''}">
+                                            <label for="email" class="col-lg-3 col-md-3 control-label">电子邮箱</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.email}" id="email" name="member.email" placeholder="必填，如：user@example.com">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6">
+                                            <label for="mobile" class="col-lg-3 col-md-3 control-label">手机</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.mobile}" id="mobile" name="member.mobile" placeholder="必填，11位手机号码">
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </fieldset>
                                 <legend>学习经历</legend>
