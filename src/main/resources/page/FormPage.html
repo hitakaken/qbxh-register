@@ -1,9 +1,90 @@
 <html>
+<head>
+    @Require
+    <style>
+        .row{
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
 <body>
 <div class="container">
     <div class="row">
         <div class="bs-component">
-            ${sessionId}
+            <div class="modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form class="form-horizontal form-inline" method="post" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <legend>第二步：完善会员信息</legend>
+                            </div>
+                            <div class="modal-body">
+                                <legend>个人信息</legend>
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('name')) return ' has-error'; else return ''}">
+                                            <label for="name" class="col-lg-3 col-md-3 control-label">姓名</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.name}" id="name" name="member.name" placeholder="必填">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('gender')) return ' has-error'; else return ''}">
+                                            <label class="col-lg-3 col-md-3 control-label">性别</label>
+                                            <div class="col-lg-9 input-group">
+                                                <label class="radio-inline">
+                                                    @ShowIf(!male)
+                                                    <input type="radio" name="member.gender" id="gender_male" value="男" >
+                                                    @ShowIf(male)
+                                                    <input type="radio" name="member.gender" id="gender_male" value="男" checked>
+                                                    男
+                                                </label>
+                                                <label class="radio-inline">
+                                                    @ShowIf(!female)
+                                                    <input type="radio" name="member.gender" id="gender_female" value="女" >
+                                                    @ShowIf(female)
+                                                    <input type="radio" name="member.gender" id="gender_female" value="女" checked>
+                                                    女
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('birthday')) return ' has-error'; else return ''}">
+                                            <label for="birthday" class="col-lg-3 col-md-3 control-label">出生年月</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.birthday}" id="birthday" name="member.birthday" placeholder="必填，六位数字，如：197001">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6">
+                                            <label for="id" class="col-lg-3 col-md-3 control-label">身份证</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.id}" id="id" name="member.id" placeholder="18位或15位身份证号码">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                                <legend>学习经历</legend>
+                                <fieldset>
+
+                                </fieldset>
+                                <legend>工作信息</legend>
+                                <fieldset>
+
+                                </fieldset>
+                                <legend>社会经历</legend>
+                                <fieldset>
+
+                                </fieldset>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">下一步</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

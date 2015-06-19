@@ -9,49 +9,40 @@
                         <form class="form-horizontal" method="post" >
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h4 class="modal-title">会员注册</h4>
+                            <legend>第一步：填写验证信息</legend>
                         </div>
                         <div class="modal-body">
-                                <legend>请填写验证信息 ${checkInfo} ${errorMsg.size()} </legend>
-                                <fieldset>
-                                    @ShowIf(!error)
-                                    <div class="form-group">
-                                        <label for="name" class="col-lg-2 control-label">学会名称</label>
-                                        <div class="col-lg-10 input-group">
-                                            <input type="text" class="form-control" value="${checkInfo.name}" id="name" name="checkInfo.name" placeholder="学会完整名称">
-                                        </div>
-                                    </div>
 
-                                    @ShowIf(error)
-                                    <div class="form-group has-error">
-                                        <label for="name" class="col-lg-2 control-label">学会名称</label>
-                                        <div class="col-lg-10 input-group">
-                                            <input type="text" class="form-control" value="${checkInfo.name}" id="name1" name="checkInfo.name" placeholder="请填写学会完整名称">
-                                        </div>
+                            <fieldset>
+                                <div class="form-group${if(errorName) return ' has-error'; else return '';}">
+                                    <label for="name" class="col-lg-2 control-label">学会名称</label>
+                                    <div class="col-lg-9 input-group">
+                                        <input type="text" class="form-control" value="${checkInfo.name}" id="name" name="checkInfo.name" placeholder="请填写学会完整名称">
                                     </div>
-
-                                    <div class="form-group">
-                                        <label for="website" class="col-lg-2 control-label">学会网址</label>
-                                        <div class="col-lg-10 input-group">
-                                            <span class="input-group-addon">http://</span>
-                                            <input type="text" class="form-control" id="website" name="checkInfo.website" placeholder="">
-                                        </div>
+                                </div>
+                                <div class="form-group${if(errorWebsite) return ' has-error'; else return '';}">
+                                    <label for="website" class="col-lg-2 control-label">学会网址</label>
+                                    <div class="col-lg-9 input-group">
+                                        <span class="input-group-addon">http://</span>
+                                        <input type="text" class="form-control" value="${checkInfo.website}" id="website" name="checkInfo.website" placeholder="">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="checksum" class="col-lg-2 control-label">验证图片</label>
-                                        <div class="col-lg-10 input-group">
-                                            <input type="text" class="form-control" id="checksum" name="checkInfo.checksum" placeholder="">
+                                </div>
+                                <div class="form-group${if(errorCage) return ' has-error'; else return '';}">
+                                    <label for="checksum" class="col-lg-2 control-label">验证图片</label>
+                                    <div class="col-lg-9 input-group">
+                                        <input type="text" class="form-control" id="checksum" name="checkInfo.checksum" placeholder="">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button">Button</button>
-                                                <img src="" />
+                                                <img id="cage" width="100" height="40" src = "/cage.jpg" style="margin: 0 10px 0 10px;" />
                                             </span>
-                                        </div>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button" onclick="$('#cage').removeAttr('src').attr('src','/cage.jpg?reload')">更换图片</button>
+                                            </span>
                                     </div>
-                                </fieldset>
-
+                                </div>
+                            </fieldset>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">提交</button>
+                            <button type="submit" class="btn btn-primary">下一步</button>
                         </div>
                         </form>
                     </div>

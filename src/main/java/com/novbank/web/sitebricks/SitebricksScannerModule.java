@@ -1,12 +1,17 @@
 package com.novbank.web.sitebricks;
 
+import com.google.appengine.repackaged.com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.inject.matcher.Matchers;
 import com.google.sitebricks.SitebricksModule;
+import com.google.sitebricks.conversion.DateConverters;
+import com.google.sitebricks.ext.SitebricksValidationExtModule;
 import com.google.sitebricks.rendering.Decorated;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.apache.bval.guice.ValidationModule;
 
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -14,8 +19,14 @@ import java.util.Set;
  */
 public class SitebricksScannerModule extends SitebricksModule {
     private Set<Package> packages;
+    private Map<Class,Class> binds;
 
     public SitebricksScannerModule(Package... packages) {
+        this(Maps.newHashMap(),packages);
+    }
+
+    public SitebricksScannerModule(Map<Class,Class> binds, Package... packages) {
+        this.binds = binds;
         this.packages = Sets.newHashSet();
         if(packages!=null){
             for(Package pkg : packages){
@@ -35,8 +46,14 @@ public class SitebricksScannerModule extends SitebricksModule {
 
     @Override
     protected void configureSitebricks() {
-        for(Package pkg : packages)
-            scan(pkg);
+        // Validation
+        install(new SitebricksValidationExtModule());
+        install(new ValidationModule());
+
+        for(Class key : binds.keySet())
+            bind(key).to(binds.get(key));
+
+        for(Package pkg : packages) scan(pkg);
 
         // Bind a dummy interceptor to specifically test AOP interaction with decorated pages.
         bindInterceptor(Matchers.annotatedWith(Decorated.class), Matchers.any(), new MethodInterceptor() {
@@ -45,5 +62,9 @@ public class SitebricksScannerModule extends SitebricksModule {
                 return methodInvocation.proceed();
             }
         });
+        converter(new DateConverters.DateStringConverter(DEFAULT_DATE_TIME_FORMAT));
     }
+
+    // a weird format
+    public static final String DEFAULT_DATE_TIME_FORMAT = "yyyy-MM-dd";
 }

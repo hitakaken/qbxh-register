@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>${pageTitle}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="/assets/bootswatch/cosmo/bootstrap.css" media="screen">
@@ -12,11 +11,22 @@
     <script src="/assets/bootswatch/bower_components/html5shiv/dist/html5shiv.js"></script>
     <script src="/assets/bootswatch/bower_components/respond/dest/respond.min.js"></script>
     <![endif]-->
+    <style>
+        body{
+            font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif
+        }
+
+        h1,.h1,h2,.h2,h3,.h3,h4,.h4,.lead{
+            font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif
+        }
+    </style>
+    <title>${pageTitle}</title>
 </head>
 <body>
 
     @Decorated
     <div>内容页面</div>
+
 
     <div class="container">
         <footer>
@@ -27,8 +37,11 @@
             </div>
         </footer>
     </div>
-<script src="/assets/bootswatch/bower_components/jquery/dist/jquery.js"></script>
-<script src="/assets/bootswatch/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/assets/bootswatch/assets/js/bootswatch.js"></script>
+
+    <script src="/assets/bootswatch/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/assets/bootswatch/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/assets/bootswatch/assets/js/bootswatch.js"></script>
+
 </body>
+
 </html>
