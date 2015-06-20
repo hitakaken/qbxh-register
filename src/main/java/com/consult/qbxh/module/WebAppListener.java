@@ -2,13 +2,14 @@ package com.consult.qbxh.module;
 
 import com.consult.qbxh.dao.DiskMemberDao;
 import com.consult.qbxh.dao.MemberDao;
+import com.consult.qbxh.model.Member;
 import com.consult.qbxh.page.FirstPage;
-import com.google.appengine.repackaged.com.google.common.collect.Maps;
+import com.google.common.collect.Maps;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.servlet.GuiceServletContextListener;
+import com.google.sitebricks.persist.disk.DiskModule;
 import com.novbank.web.cage.CageModule;
-import com.novbank.web.cage.CageServlet;
 import com.novbank.web.sitebricks.SitebricksScannerModule;
 import com.novbank.web.webjars.WebJarsModule;
 
@@ -36,6 +37,12 @@ public class WebAppListener extends GuiceServletContextListener {
                 new WebJarsModule("assets"),
                 new CageModule(),
                 new SitebricksScannerModule(binds,FirstPage.class.getPackage()),
+                new DiskModule("D:\\Workspace\\data\\qbxh\\index"){
+                    @Override
+                    protected void configurePersistence() {
+                        scan(Member.class.getPackage());
+                    }
+                },
                 new QbxhShiroWebModule(this.servletContext));
     }
 }

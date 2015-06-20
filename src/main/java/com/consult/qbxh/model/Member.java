@@ -1,5 +1,10 @@
 package com.consult.qbxh.model;
 
+import com.google.sitebricks.persist.Indexed;
+import com.novbank.web.Regexp;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -8,9 +13,15 @@ import java.io.Serializable;
 /**
  * Created by hp on 2015/6/19.
  */
+@Entity
 public class Member implements Serializable {
+    @Id
     @NotNull
-    @Size(min = 2, max = 20)
+    private String sessionId;
+
+    @Indexed
+    @NotNull
+    @Size(min = 2, max = 200)
     private String name;
 
     @NotNull
@@ -21,73 +32,119 @@ public class Member implements Serializable {
     @Pattern(regexp = "\\d{6}")
     private String birthday;
 
+    @Indexed
     @NotNull
-    @Pattern(regexp = "[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?")
+    @Pattern(regexp = Regexp.EMAIL)
     private String email;
 
+    @Indexed
     @NotNull
+    @Pattern(regexp = Regexp.MOBILE)
     private String mobile;
 
+    @Indexed
     @NotNull
+    @Size(max = 200)
     private String jobTitle;
 
+    @Indexed
     @NotNull
+    @Size(max = 200)
     private String education;
 
+    @Indexed
     @NotNull
+    @Size(max = 200)
     private String degree;
 
+    @Indexed
     @NotNull
+    @Size(max = 200)
     private String background;
 
+    @Indexed
     @NotNull
+    @Size(max = 200)
     private String engage;
 
+    @Indexed
     @NotNull
+    @Size(max = 200)
     private String company;
 
+    @Indexed
     @NotNull
+    @Size(max = 200)
     private String department;
 
+    @Indexed
     @NotNull
+    @Size(max = 200)
     private String position;
 
     @NotNull
+    @Pattern(regexp = "[-0-9]{7,}")
     private String workPhone;
 
+    @Indexed
     @NotNull
+    @Size(max = 1000)
     private String workAddress;
 
+    @Indexed
     @NotNull
-    @Pattern(regexp = "[1-9]\\d{5}(?!\\d)")
+    @Pattern(regexp = Regexp.ZIP_CODE)
     private String workZipCode;
 
+    @Indexed
     @NotNull
+    @Size(max = 200)
     private String country;
 
+    @Indexed
     @NotNull
+    @Size(max = 200)
     private String nationality;
 
     @NotNull
+    @Size(max = 200)
     private String hometown;
 
-    @Pattern(regexp = "[1-9][0-9]{4,}")
+    @NotNull
+    @Size(max = 200)
+    private String political;
+
+    @Pattern(regexp = Regexp.QQ)
     private String qq;
 
+    @Size(max = 200)
     private String weixin;
 
-    @NotNull
+    @Size(max = 2000)
     private String socialWork;
 
-    @NotNull
+    @Size(max = 2000)
     private String socialHonor;
 
+    @Size(max = 2000)
     private String academicNational;
 
+    @Size(max = 2000)
     private String academicInternational;
 
-    @Pattern(regexp = "(^(\\d{6})(\\d{4})(\\d{2})(\\d{2})(\\d{3})([0-9]|X)$)|(^(\\d{6})(\\d{2})(\\d{2})(\\d{2})(\\d{3})$)|\\s+")
+    @Pattern(regexp = Regexp.ID)
     private String id;
+
+    public Member() {
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
 
     public String getName() {
         return name;
@@ -239,6 +296,14 @@ public class Member implements Serializable {
 
     public void setHometown(String hometown) {
         this.hometown = hometown;
+    }
+
+    public String getPolitical() {
+        return political;
+    }
+
+    public void setPolitical(String political) {
+        this.political = political;
     }
 
     public String getQq() {

@@ -2,7 +2,6 @@ package com.novbank.web.cage;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

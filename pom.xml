@@ -7,8 +7,9 @@
     <groupId>com.chinaconsult</groupId>
     <artifactId>qbxh-register</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <name>QBXH :: Register Website</name>
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>1.7</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,6 +24,7 @@
         <jetty.version>9.2.11.v20150529</jetty.version>
         <shiro.version>1.2.3</shiro.version>
         <sitebricks.version>0.8.10</sitebricks.version>
+        <mvel2.version>2.2.5.Final</mvel2.version>
         <!-- Data -->
         <jackson2.version>2.5.4</jackson2.version>
         <lucene4.version>4.10.4</lucene4.version>
@@ -34,6 +36,8 @@
         <bootstrap.version>3.3.4</bootstrap.version>
         <font-awesome.version>4.3.0-2</font-awesome.version>
         <bootswatch.version>3.3.1+2</bootswatch.version>
+        <!-- Utilities -->
+        <joor.version>0.9.5</joor.version>
         <!-- Test -->
         <slf4j.version>1.7.10</slf4j.version>
         <junit.version>4.12</junit.version>
@@ -107,9 +111,14 @@
             <artifactId>sitebricks-persist-redis</artifactId>
             <version>${sitebricks.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mvel</groupId>
+            <artifactId>mvel2</artifactId>
+            <version>${mvel2.version}</version>
+        </dependency>
 
         <!-- lucene -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-core</artifactId>
             <version>${lucene4.version}</version>
@@ -123,7 +132,7 @@
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers-common</artifactId>
             <version>${lucene4.version}</version>
-        </dependency>
+        </dependency>-->
 
         <!-- Apache Commons -->
         <dependency>
@@ -222,6 +231,12 @@
             <version>1.0</version>
         </dependency>
 
+        <!-- Utilities -->
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>joor</artifactId>
+            <version>${joor.version}</version>
+        </dependency>
         <!-- Test -->
         <dependency>
             <groupId>junit</groupId>

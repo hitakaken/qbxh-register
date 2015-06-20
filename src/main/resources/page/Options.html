@@ -1,0 +1,11 @@
+<html>
+<body>
+    @Repeat(var="item",items=items)
+    <font>
+    @ShowIf(item.selected)
+    <option value="${item.text}" selected>${item.text}</option>
+    @ShowIf(!item.selected)
+    <option value="${item.text}">${item.text}</option>
+    </font>
+</body>
+</html>

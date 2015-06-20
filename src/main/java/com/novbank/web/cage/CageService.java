@@ -2,7 +2,6 @@ package com.novbank.web.cage;
 
 import com.github.cage.Cage;
 import com.github.cage.GCage;
-import com.github.cage.YCage;
 import com.google.inject.Singleton;
 import org.apache.commons.lang3.StringUtils;
 

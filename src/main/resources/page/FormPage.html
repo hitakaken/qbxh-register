@@ -18,9 +18,10 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                 <legend>第二步：完善会员信息</legend>
+                                <input type="hidden" value="${member.sessionId}" name="member.sessionId" id="sessionId"/>
                             </div>
                             <div class="modal-body">
-                                <legend>个人信息</legend>
+                                <legend><i class="fa fa-info-circle"></i>&nbsp;个人信息</legend>
                                 <fieldset>
                                     <div class="row">
                                         <div class="form-group col-lg-6 col-md-6${if(errors.contains('name')) return ' has-error'; else return ''}">
@@ -29,34 +30,28 @@
                                                 <input type="text" class="form-control" value="${member.name}" id="name" name="member.name" placeholder="必填">
                                             </div>
                                         </div>
-                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('gender')) return ' has-error'; else return ''}">
-                                            <label class="col-lg-3 col-md-3 control-label">性别</label>
-                                            <div class="col-lg-9 input-group">
-                                                <label class="radio-inline">
-                                                    @ShowIf(!male)
-                                                    <input type="radio" name="member.gender" id="gender_male" value="男" >
-                                                    @ShowIf(male)
-                                                    <input type="radio" name="member.gender" id="gender_male" value="男" checked>
-                                                    男
-                                                </label>
-                                                <label class="radio-inline">
-                                                    @ShowIf(!female)
-                                                    <input type="radio" name="member.gender" id="gender_female" value="女" >
-                                                    @ShowIf(female)
-                                                    <input type="radio" name="member.gender" id="gender_female" value="女" checked>
-                                                    女
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="form-group col-lg-6 col-md-6${if(errors.contains('birthday')) return ' has-error'; else return ''}">
                                             <label for="birthday" class="col-lg-3 col-md-3 control-label">出生年月</label>
                                             <div class="col-lg-9 col-md-9 input-group">
                                                 <input type="text" class="form-control" value="${member.birthday}" id="birthday" name="member.birthday" placeholder="必填，六位数字，如：197001">
                                             </div>
                                         </div>
-                                        <div class="form-group col-lg-6 col-md-6">
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('gender')) return ' has-error'; else return ''}">
+                                            <label class="col-lg-3 col-md-3 control-label">性别</label>
+                                            <div class="col-lg-9 input-group">
+                                                @ShowIf(!male)
+                                                <label class="radio-inline"><input type="radio" name="member.gender" id="gender_male" value="男" />男</label>
+                                                @ShowIf(male)
+                                                <label class="radio-inline"><input type="radio" name="member.gender" id="gender_male" value="男" checked />男</label>
+                                                @ShowIf(!female)
+                                                <label class="radio-inline"><input type="radio" name="member.gender" id="gender_female" value="女" />女</label>
+                                                @ShowIf(female)
+                                                <label class="radio-inline"><input type="radio" name="member.gender" id="gender_female" value="女" checked />女</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('id')) return ' has-error'; else return ''}">
                                             <label for="id" class="col-lg-3 col-md-3 control-label">身份证</label>
                                             <div class="col-lg-9 col-md-9 input-group">
                                                 <input type="text" class="form-control" value="${member.id}" id="id" name="member.id" placeholder="18位或15位身份证号码">
@@ -64,32 +59,200 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('country')) return ' has-error'; else return ''}">
+                                            <label for="country" class="col-lg-3 col-md-3 control-label">国籍</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.country}" id="country" name="member.country" placeholder="必填，如：中国">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('nationality')) return ' has-error'; else return ''}">
+                                            <label for="nationality" class="col-lg-3 col-md-3 control-label">民族</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.nationality}" id="nationality" name="member.nationality" placeholder="必填，如：汉">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('hometown')) return ' has-error'; else return ''}">
+                                            <label for="hometown" class="col-lg-3 col-md-3 control-label">籍贯</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.hometown}" id="hometown" name="member.hometown" placeholder="必填，如：江苏南京">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('political')) return ' has-error'; else return ''}">
+                                            <label for="political" class="col-lg-3 col-md-3 control-label">政治面貌</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <select class="form-control" id="political" name="member.political" >
+                                                    <option value="">请选择...</option>
+                                                    @Options(list=parties, value=member.political)
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row"><br /></div>
+                                </fieldset>
+                                <legend><i class="fa fa-envelope"></i>&nbsp;联系方式</legend>
+                                <fieldset>
+                                    <div class="row">
                                         <div class="form-group col-lg-6 col-md-6${if(errors.contains('email')) return ' has-error'; else return ''}">
                                             <label for="email" class="col-lg-3 col-md-3 control-label">电子邮箱</label>
                                             <div class="col-lg-9 col-md-9 input-group">
                                                 <input type="text" class="form-control" value="${member.email}" id="email" name="member.email" placeholder="必填，如：user@example.com">
                                             </div>
                                         </div>
-                                        <div class="form-group col-lg-6 col-md-6">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('mobile')) return ' has-error'; else return ''}">
                                             <label for="mobile" class="col-lg-3 col-md-3 control-label">手机</label>
                                             <div class="col-lg-9 col-md-9 input-group">
                                                 <input type="text" class="form-control" value="${member.mobile}" id="mobile" name="member.mobile" placeholder="必填，11位手机号码">
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('qq')) return ' has-error'; else return ''}">
+                                            <label for="qq" class="col-lg-3 col-md-3 control-label">QQ</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.qq}" id="qq" name="member.qq" placeholder="如：123456789">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('weixin')) return ' has-error'; else return ''}">
+                                            <label for="weixin" class="col-lg-3 col-md-3 control-label">微信</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.weixin}" id="weixin" name="member.weixin" placeholder="微信号码">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row"><br /></div>
                                 </fieldset>
-                                <legend>学习经历</legend>
+                                <legend><i class="fa fa-trophy"></i>&nbsp;教育背景</legend>
                                 <fieldset>
-
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('education')) return ' has-error'; else return ''}">
+                                            <label for="education" class="col-lg-3 col-md-3 control-label">学历</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <select class="form-control" id="education" name="member.education" >
+                                                    <option value="">请选择...</option>
+                                                    @Options(list=educations, value=member.education)
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('degree')) return ' has-error'; else return ''}">
+                                            <label for="degree" class="col-lg-3 col-md-3 control-label">学位</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <select class="form-control" id="degree" name="member.degree" >
+                                                    <option value="">请选择...</option>
+                                                    @Options(list=degrees, value=member.degree)
+                                                    <option></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('background')) return ' has-error'; else return ''}">
+                                            <label for="background" class="col-lg-3 col-md-3 control-label">专业背景</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.background}" id="background" name="member.background" placeholder="必填">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('engage')) return ' has-error'; else return ''}">
+                                            <label for="engage" class="col-lg-3 col-md-3 control-label">现从事专业</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.engage}" id="engage" name="member.engage" placeholder="必填">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row"><br /></div>
                                 </fieldset>
-                                <legend>工作信息</legend>
+                                <legend><i class="fa fa-rmb"></i>&nbsp;从业信息</legend>
                                 <fieldset>
-
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('company')) return ' has-error'; else return ''}">
+                                            <label for="company" class="col-lg-3 col-md-3 control-label">工作单位</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.company}" id="company" name="member.company" placeholder="必填">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('department')) return ' has-error'; else return ''}">
+                                            <label for="department" class="col-lg-3 col-md-3 control-label">所属部门</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.department}" id="department" name="member.department" placeholder="必填">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('position')) return ' has-error'; else return ''}">
+                                            <label for="position" class="col-lg-3 col-md-3 control-label">现任职务</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.position}" id="position" name="member.position" placeholder="必填">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('workPhone')) return ' has-error'; else return ''}">
+                                            <label for="workPhone" class="col-lg-3 col-md-3 control-label">固定电话</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.workPhone}" id="workPhone" name="member.workPhone" placeholder="必填，如：021-64455555-8888">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('workAddress')) return ' has-error'; else return ''}">
+                                            <label for="workAddress" class="col-lg-3 col-md-3 control-label">单位地址</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.workAddress}" id="workAddress" name="member.workAddress" placeholder="必填">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('workZipCode')) return ' has-error'; else return ''}">
+                                            <label for="workZipCode" class="col-lg-3 col-md-3 control-label">单位邮编</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.workZipCode}" id="workZipCode" name="member.workZipCode" placeholder="必填">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6${if(errors.contains('jobTitle')) return ' has-error'; else return ''}">
+                                            <label for="jobTitle" class="col-lg-3 col-md-3 control-label">职称</label>
+                                            <div class="col-lg-9 col-md-9 input-group">
+                                                <input type="text" class="form-control" value="${member.jobTitle}" id="jobTitle" name="member.jobTitle" placeholder="必填，如：教授级高工">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row"><br /></div>
                                 </fieldset>
-                                <legend>社会经历</legend>
+                                <legend><i class="fa fa-users"></i>&nbsp;社会影响</legend>
                                 <fieldset>
-
+                                    <div class="row">
+                                        <div class="form-group col-lg-12 col-md-12${if(errors.contains('socialWork')) return ' has-error'; else return ''}">
+                                            <label for="socialWork" class="col-lg-2 col-md-2 control-label">主要社会职务</label>
+                                            <div class="col-lg-10 col-md-10 input-group">
+                                                <textarea class="form-control" rows="4" id="socialWork" name="member.socialWork" placeholder="多项职务请换行，不超过2000字符">${member.socialWork}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-12 col-md-12${if(errors.contains('socialHonor')) return ' has-error'; else return ''}">
+                                            <label for="socialHonor" class="col-lg-2 col-md-2 control-label">主要社会荣誉</label>
+                                            <div class="col-lg-10 col-md-10 input-group">
+                                                <textarea class="form-control" rows="4" id="socialHonor" name="member.socialHonor" placeholder="多项荣誉请换行，不超过2000字符">${member.socialHonor}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-12 col-md-12${if(errors.contains('academicNational')) return ' has-error'; else return ''}">
+                                            <label for="academicNational" class="col-lg-2 col-md-2 control-label">参加全国性学术社团及任职情况</label>
+                                            <div class="col-lg-10 col-md-10 input-group">
+                                                <textarea class="form-control" rows="4" id="academicNational" name="member.academicNational" placeholder="不超过2000字符">${member.academicNational}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-12 col-md-12${if(errors.contains('academicInternational')) return ' has-error'; else return ''}">
+                                            <label for="academicInternational" class="col-lg-2 col-md-2 control-label">参加国际性学术社团及任职情况</label>
+                                            <div class="col-lg-10 col-md-10 input-group">
+                                                <textarea class="form-control" rows="4" id="academicInternational" name="member.academicInternational" placeholder="不超过2000字符">${member.academicInternational}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row"><br /></div>
                                 </fieldset>
                             </div>
                             <div class="modal-footer">

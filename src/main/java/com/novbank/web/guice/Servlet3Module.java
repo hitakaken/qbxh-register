@@ -7,20 +7,15 @@ import com.google.inject.matcher.AbstractMatcher;
 import com.google.inject.matcher.Matchers;
 import com.google.inject.servlet.ServletModule;
 
+import javax.servlet.Filter;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.annotation.WebInitParam;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.AnnotatedElement;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.servlet.Filter;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebInitParam;
+import java.util.*;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;

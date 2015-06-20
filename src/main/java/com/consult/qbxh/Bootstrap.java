@@ -3,13 +3,7 @@ package com.consult.qbxh;
 import com.consult.qbxh.module.WebAppListener;
 import com.google.inject.servlet.GuiceFilter;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.DefaultServlet;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.webapp.WebAppContext;
-
-import javax.servlet.DispatcherType;
-import java.util.EnumSet;
 
 /**
  * Created by hp on 2015/6/12.

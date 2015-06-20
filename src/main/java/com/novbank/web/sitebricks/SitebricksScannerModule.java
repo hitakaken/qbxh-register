@@ -1,6 +1,6 @@
 package com.novbank.web.sitebricks;
 
-import com.google.appengine.repackaged.com.google.common.collect.Maps;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.google.inject.matcher.Matchers;
 import com.google.sitebricks.SitebricksModule;
@@ -22,7 +22,7 @@ public class SitebricksScannerModule extends SitebricksModule {
     private Map<Class,Class> binds;
 
     public SitebricksScannerModule(Package... packages) {
-        this(Maps.newHashMap(),packages);
+        this(Maps.<Class, Class>newHashMap(),packages);
     }
 
     public SitebricksScannerModule(Map<Class,Class> binds, Package... packages) {

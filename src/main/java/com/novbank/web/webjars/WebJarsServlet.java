@@ -15,9 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.logging.Level;
-import java.util.regex.Pattern;
 
 /**
  * Created by hp on 2015/6/16.
