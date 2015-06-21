@@ -67,8 +67,7 @@ public class FirstPage extends Layout{
             String uuid = UUID.randomUUID().toString();
             session.setAttribute("register-session", uuid);
             service.clear(session);
-            response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
-            response.sendRedirect(request.getContextPath() + "/register/form");
+            redirect("/register/form");
         }
     }
 }

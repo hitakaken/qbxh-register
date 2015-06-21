@@ -73,20 +73,21 @@ public class FormPage extends Layout {
 
     @Get
     public void get() throws IOException {
-        HttpSession session = request.getSession();
-        if(session.getAttribute("register-session")==null){
-            member.setSessionId(UUID.randomUUID().toString());
-            /*response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
-            response.sendRedirect(request.getContextPath() + "/register");*/
+        if(getFormSession()==null){
+            //member.setSessionId(UUID.randomUUID().toString());
+            redirect("/register");
         }else{
-            member.setSessionId((String) session.getAttribute("register-session"));
+            member.setSessionId(getFormSession());
         }
     }
 
     @Post
-    public void post(){
+    public void post() throws IOException {
         //1.检查 sessionId
-
+        if(getFormSession()==null||!StringUtils.equals(member.getSessionId(),getFormSession())){
+            redirect("/register");
+            return;
+        }
         //2.校验并保存
         try {
             FormUtils.trimToNull(member);
@@ -96,9 +97,9 @@ public class FormPage extends Layout {
                 errors.add(constraintViolation.getPropertyPath().toString());
             }
         }
-        System.out.println(errors);
         if(errors.size()==0){
-            System.out.println("persist");
+            request.getSession().removeAttribute("register-session");
+            redirect("/register/success");
         }
     }
 
