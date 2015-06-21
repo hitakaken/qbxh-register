@@ -19,8 +19,8 @@ public class CsvUtils {
 
     public static <T> String toCSV (List<T> pojoList, Class<T> pojoClass, Class format) throws JsonProcessingException {
         CsvMapper mapper = new CsvMapper();
+        mapper.addMixIn(pojoClass,format);
         CsvSchema schema = mapper.schemaFor(pojoClass).withHeader();
-        mapper.setMixIns(ImmutableMap.<Class<?>, Class<?>>of(pojoClass, format));
         return mapper.writer(schema).writeValueAsString(pojoList);
     }
 }

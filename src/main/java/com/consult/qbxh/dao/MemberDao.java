@@ -11,4 +11,6 @@ public interface MemberDao {
     void save(Member member);
 
     List<Member> findAll();
+
+    long count();
 }

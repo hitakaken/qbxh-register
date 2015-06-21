@@ -6,6 +6,7 @@ import com.google.sitebricks.persist.Persister;
 import org.apache.bval.guice.Validate;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -15,6 +16,9 @@ import java.util.List;
 public class DiskMemberDao implements MemberDao {
     @Inject
     private Persister persister;
+
+    @Inject
+    private Provider<EntityStore> factory;
 
     @Validate
     @Override
@@ -37,5 +41,10 @@ public class DiskMemberDao implements MemberDao {
                 return es.all(Member.class);
             }
         });
+    }
+
+    @Override
+    public long count() {
+        return -1;
     }
 }
