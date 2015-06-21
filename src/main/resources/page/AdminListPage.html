@@ -1,4 +1,47 @@
 <html>
 <body>
+<div class="container">
+    <div class="row">
+        <table class="table table-striped table-hover ">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>单位</th>
+                <th>姓名</th>
+                <th>手机</th>
+                <th>电子邮箱</th>
+            </tr>
+            </thead>
+            <tbody>
+            @Repeat(items=items,var="item")
+            <tr>
+                <td>${index+1}</td>
+                <td>${item.company}</td>
+                <td>${item.name}</td>
+                <td>${item.mobile}</td>
+                <td>${item.email}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-lg-9 col-md-9 text-center">
+            <ul class="pagination">
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                <li class="disabled"><a href="#">&lsaquo;</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&rsaquo;</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-md-3">
+            <button type="button" class="btn btn-primary"><i class="fa fa-print"></i>&nbsp;&nbsp;导出</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>

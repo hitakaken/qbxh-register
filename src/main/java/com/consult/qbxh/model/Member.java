@@ -1,5 +1,7 @@
 package com.consult.qbxh.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import com.google.sitebricks.persist.Indexed;
 import com.novbank.web.Regexp;
 
@@ -17,6 +19,7 @@ import java.io.Serializable;
 public class Member implements Serializable {
     @Id
     @NotNull
+    @JsonPropertyDescription()
     private String sessionId;
 
     @Indexed
