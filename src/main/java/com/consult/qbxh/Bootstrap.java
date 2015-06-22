@@ -10,7 +10,7 @@ import org.eclipse.jetty.webapp.WebAppContext;
  */
 public class Bootstrap {
     public static void main(String[] args) throws Exception{
-        Server server = new Server(8080);
+        Server server = new Server(8180);
 
         WebAppContext webAppContext = new WebAppContext();
         webAppContext.setContextPath("/qbxh/");

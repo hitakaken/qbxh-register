@@ -37,7 +37,7 @@ public class WebAppListener extends GuiceServletContextListener {
                 new WebJarsModule("assets"),
                 new CageModule(),
                 new SitebricksScannerModule(binds,FirstPage.class.getPackage()),
-                new DiskModule("D:\\Workspace\\data\\qbxh\\index"){
+                new DiskModule("data\\qbxh\\index"){
                     @Override
                     protected void configurePersistence() {
                         scan(Member.class.getPackage());
