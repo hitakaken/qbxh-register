@@ -13,7 +13,7 @@ public class Bootstrap {
         Server server = new Server(8080);
 
         WebAppContext webAppContext = new WebAppContext();
-        webAppContext.setContextPath("/");
+        webAppContext.setContextPath("/qbxh/");
         webAppContext.setResourceBase("src/main/webapp/");
         webAppContext.setParentLoaderPriority(true);
         webAppContext.addEventListener(new WebAppListener());

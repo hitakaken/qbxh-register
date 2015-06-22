@@ -13,6 +13,8 @@ import com.google.sitebricks.headless.Reply;
 import com.google.sitebricks.http.Get;
 import com.google.sitebricks.rendering.Decorated;
 import com.novbank.web.util.CsvUtils;
+import com.novbank.web.util.RequestUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.net.URLEncoder;
 import java.util.List;
@@ -36,13 +38,14 @@ public class AdminListPage extends Layout{
 
     @Get
     public void get() throws Exception {
+        if(!isAdmin()) redirect("/register");
         items = members.findAll();
-        System.out.println("HTML Request");
     }
 
     @At("/csv")
     @Get
     public Reply<?> getCsv() throws Exception{
+        if(!isAdmin()) redirect("/register");
         items = members.findAll();
         System.out.println("CSV Request");
         String text = CsvUtils.toCSV(items, Member.class, MemberFormat.class);
@@ -61,5 +64,8 @@ public class AdminListPage extends Layout{
         this.items = items;
     }
 
-
+    public boolean isAdmin(){
+        String ip = RequestUtils.getClientIpAddress(request);
+        return StringUtils.equals(ip,"127.0.0.1") || StringUtils.startsWith(ip,"10.1.80.");
+    }
 }
