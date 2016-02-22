@@ -23,7 +23,7 @@
         <!-- Web -->
         <jetty.version>9.2.11.v20150529</jetty.version>
         <shiro.version>1.2.3</shiro.version>
-        <sitebricks.version>0.8.10</sitebricks.version>
+        <sitebricks.version>0.8.11</sitebricks.version>
         <mvel2.version>2.2.5.Final</mvel2.version>
         <!-- Data -->
         <jackson2.version>2.5.4</jackson2.version>
@@ -32,7 +32,7 @@
         <!-- WebJars -->
         <webjars-locator.version>0.23</webjars-locator.version>
         <webjars-servlet-2.x.version>1.1</webjars-servlet-2.x.version>
-        <jquery.version>2.1.4</jquery.version>
+        <jquery.version>1.9.1</jquery.version>
         <bootstrap.version>3.3.4</bootstrap.version>
         <font-awesome.version>4.3.0-2</font-awesome.version>
         <bootswatch.version>3.3.1+2</bootswatch.version>
