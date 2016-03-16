@@ -1,5 +1,7 @@
 package com.novbank.web.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -23,7 +25,7 @@ public class RequestUtils {
         for (String header : HEADERS_TO_TRY) {
             String ip = request.getHeader(header);
             if (ip != null && ip.length() != 0 && !"unknown".equalsIgnoreCase(ip)) {
-                return ip;
+                return StringUtils.contains(ip, ":") ? ip.split(":")[0] : ip;
             }
         }
         return request.getRemoteAddr();
