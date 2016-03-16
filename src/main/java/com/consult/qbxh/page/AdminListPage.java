@@ -66,6 +66,7 @@ public class AdminListPage extends Layout{
 
     public boolean isAdmin(){
         String ip = RequestUtils.getClientIpAddress(request);
+        System.out.println(ip);
         return StringUtils.equals(ip,"127.0.0.1") || StringUtils.startsWith(ip,"10.1.80.") || StringUtils.equals(ip, "180.166.28.73");
     }
 }
